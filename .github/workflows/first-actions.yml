@@ -1,34 +1,61 @@
-name: My First GitHub Actions
+name: PR Merged Pipeline
 
 on:
   pull_request:
     types:
       - closed
-  
-
-
 
 jobs:
- test:
+  test:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8, 3.9]
     environment: testing
-    if: github.event.pull_request.merged == true
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+      - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Run tests
-      run: |
-        cd src
-        python -m pytest addition.py
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          cd src
+          python -m pytest addition.py
+
+  merge-to-testing:
+    if: |
+      github.event.pull_request.merged == true &&
+    #   github.event.pull_request.base.ref == 'development'
+    # needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge development into testing
+        run: |
+          git fetch origin
+          git checkout testing
+          git merge origin/development --no-edit
+          git push origin testing
+
+      # Optional: Add deploy step here
+      # - name: Deploy to staging
+      #   run: ./deploy-to-staging.sh
+
