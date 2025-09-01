@@ -47,7 +47,7 @@ jobs:
 
       - name: Merge development into testing
         run: |
-          git fetch origin
+          git fetch origin development
           git checkout testing
           git merge origin/development --no-edit
           git push origin testing
