@@ -51,3 +51,6 @@ jobs:
           git checkout testing
           git merge origin/development --no-edit
           git push origin testing
+      - name: run a script
+        run: |
+         bash script.sh

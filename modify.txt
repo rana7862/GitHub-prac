@@ -1,0 +1,7 @@
+Release Date : 2025-09-09
+
+Changes :
+1. Thread continuity bug solved on the master backend server side.
+2. Enables license check module.
+3. Compliance Score Breakdown table updated in Risk & Compliance Module 
+4. Search functionality implemented in SIEM Product tables 
