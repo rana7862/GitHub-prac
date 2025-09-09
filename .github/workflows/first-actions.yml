@@ -61,5 +61,5 @@ jobs:
 
       - name: Run custom script
         run: |
-          bash ./script.sh
+          bash script.sh
 
