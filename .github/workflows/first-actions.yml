@@ -66,7 +66,7 @@ jobs:
       - name: Run custom script
         run: |
           echo "Current directory: $(pwd)"
-          cd GitHub-prac/GitHub-prac
+          cd GitHub-prac
           sudo chmod +x script.sh
           bash script.sh create_new_release
 
