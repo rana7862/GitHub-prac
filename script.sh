@@ -17,3 +17,6 @@ create_new_release(){
     
 
 }
+main(){
+    create_new_release
+}
