@@ -51,6 +51,15 @@ jobs:
           git checkout testing
           git merge origin/development --no-edit
           git push origin testing
-      - name: run a script
+  script:
+    if: |
+      github.event.pull_request.merged == true 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run custom script
         run: |
-         bash script.sh
+          bash ./script.sh
+
