@@ -2,7 +2,7 @@
 create_new_release(){
     
     tag_number=$(grep -oP '^releaseNo=\K[^\s]+' " ./releaseNo.env" )
-    tag_with_prefix="v ${tag_number}-development"
+    tag_with_prefix="v${tag_number}-development"
     gh api \
     --method POST \
     -H "Accept: application/vnd.github+json" \
