@@ -1,6 +1,6 @@
 #!/bin/bash
 create_new_release(){
-    tag_number=$(grep -oP '^releaseNo=\K[^\s]+' ./releaseNO.eve)
+    tag_number=$(grep -oP '^releaseNo=\K[^\s]+' ./GitHub-prac/releaseNO.eve)
     # tag_number=$(grep -oP 'releaseNo=\k[^ ]+' " ./releaseNO.eve" )
     tag_with_prefix="v ${tag_number}-development"
     gh api \
