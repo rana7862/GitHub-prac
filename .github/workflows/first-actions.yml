@@ -65,10 +65,6 @@ jobs:
 
       - name: Run custom script
         run: |
-          git clone -b development https://github.com/rana7862/GitHub-prac.git
-          echo "Current directory: $(pwd)"
-          cd development 
-          cd GitHub-prac
-          sudo chmod +x script.sh
+          sudo chmod +x ./script.sh
           bash script.sh create_new_release
 

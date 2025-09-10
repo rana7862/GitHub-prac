@@ -1,6 +1,6 @@
 #!/bin/bash
 create_new_release(){
-    tag_number=$(grep -oP 'releaseNo=\k[^ ]+' " ./releaseNO.eve" )
+    tag_number=$(grep -oP 'releaseNo=\k[^\s]+' ./releaseNO.eve )
     tag_with_prefix="v${tag_number}-testing"
     gh api \
     --method POST \
@@ -20,3 +20,4 @@ create_new_release(){
 main(){
     create_new_release
 }
+main 
