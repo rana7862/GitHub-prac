@@ -82,7 +82,7 @@ jobs:
       - name: Build DEB package
         run: |
           mkdir -p build/package/usr/local/bin
-          cp ./your_app_executable build/package/usr/local/bin/
+          cp ./GitHub-prac build/package/usr/local/bin/
           echo "Package: project" > build/package/DEBIAN/control
           echo "Version: 1.0.0" >> build/package/DEBIAN/control
           echo "Architecture: amd64" >> build/package/DEBIAN/control
@@ -91,7 +91,7 @@ jobs:
           dpkg-deb --build build/package
           
       - name: Upload DEB artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: project-deb
           path: build/package.deb
