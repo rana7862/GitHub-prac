@@ -79,16 +79,16 @@ jobs:
 
       - name: prepare package root
         run: |
-          mkdir -p pkg-root/usr/local/bin
-          cp src/addition.py pkg-root/usr/local/bin/addition
-          cp script.sh pkg-root/usr/local/bin/myscript
-          chmod +x pkg-root/usr/local/bin/addition pkg-root/usr/local/bin/myscript
+          mkdir -p ./pkg-root/usr/local/bin
+          cp src/addition.py ./pkg-root/usr/local/bin/addition
+          cp script.sh ./pkg-root/usr/local/bin/myscript
+          chmod +x ./pkg-root/usr/local/bin/addition ./pkg-root/usr/local/bin/myscript
 
       - name: build pkg
         run: |
           VERSION=$(cut -d'=' -f2 ./releaseNo.env)
           echo "version is: $VERSION"
-          pkgbuild --root pkg-root --identifier com.github.ritik.githubprac --version $VERSION --install-location "/" MYAPP.pkg
+          pkgbuild --root ./pkg-root --identifier com.github.ritik.githubprac --version $VERSION --install-location "/" MYAPP.pkg
 
         
       - name: Upload pkg
