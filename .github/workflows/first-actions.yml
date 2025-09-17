@@ -87,12 +87,7 @@ jobs:
       - name: build pkg
         run: |
           VERSION=$(cut -d'=' -f2 ./releaseNo.env)
-          pkgbuild \
-            --root pkg-root \
-            --identifier com.github.ritik.githubprac \
-            --version $VERSION \
-            --install-location / \
-            MYAPP.pkg
+          pkgbuild --root pkg-root --identifier com.github.ritik.githubprac  --version $VERSION --install-location /   MYAPP.pkg
 
         
       - name: Upload pkg
