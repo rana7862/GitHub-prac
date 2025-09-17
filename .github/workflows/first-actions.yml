@@ -77,7 +77,7 @@ jobs:
         uses: actions/checkout@v3
 
 
-      - name: prepare package root\
+      - name: prepare package root
         run: |
           mkdir -p pkg-root/usr/local/bin
           cp src/addition.py pkg-root/usr/local/bin/addition
@@ -92,14 +92,14 @@ jobs:
             --identifier com.github.ritik.githubprac \
             --version $VERSION \
             --install-location / \
-            GitHub-prac-*.pkg
+            MYAPP.pkg
 
         
       - name: Upload pkg
         uses: actions/upload-artifact@v4
         with:
           name: macos-pkg
-          path: MyApp.pkg
+          path: MYAPP.pkg
 
 
 
