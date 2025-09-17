@@ -92,7 +92,7 @@ jobs:
             --identifier com.github.ritik.githubprac \
             --version $VERSION \
             --install-location / \
-            GitHub-prac-$VERSION.pkg
+            GitHub-prac-*.pkg
 
         
       - name: Upload pkg
