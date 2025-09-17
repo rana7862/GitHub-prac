@@ -88,7 +88,8 @@ jobs:
         run: |
           VERSION=$(cut -d'=' -f2 ./releaseNo.env)
           echo "version is: $VERSION"
-          pkgbuild --root pkg-root --identifier com.github.ritik.githubprac --version $VERSION --install-location / MYAPP.pkg
+          ppkgbuild --root pkg-root --identifier com.github.ritik.githubprac --version $VERSION --install-location "/" MYAPP.pkg
+
         
       - name: Upload pkg
         uses: actions/upload-artifact@v4
